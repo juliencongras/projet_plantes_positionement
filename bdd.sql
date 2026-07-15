@@ -10,3 +10,7 @@ CREATE TABLE Plantes (
   Quantite_eau FLOAT,
   Frequence_arosage INT
 );
+
+drop user if exists bob@'127.0.0.1';
+create user bob@'127.0.0.1' identified by 'password';
+grant all privileges on projet_plantes_positionement.* to bob@'127.0.0.1';
