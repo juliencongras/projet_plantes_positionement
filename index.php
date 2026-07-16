@@ -1,20 +1,9 @@
 <?php
-$plants = [
-    [
-        'name' => 'Monstera Deliciosa',
-        'image' => 'assets/images/monstera.jpg',
-        'alt' => 'Monstera Deliciosa',
-        'purchase_date' => '12/04/2025',
-        'watering' => '1 fois par semaine',
-    ],
-    [
-        'name' => 'Sanseveria',
-        'image' => 'assets/images/sanseveria.jpg',
-        'alt' => 'Sanseveria',
-        'purchase_date' => '26/11/2023',
-        'watering' => '1 fois par mois',
-    ],
-];
+
+require('pdo.php');
+$req = $pdo->query('select * from Plantes;');
+$info = $req->fetchAll();
+
 
 $resources = [
     'Arroser le matin ou en fin de journée pour éviter l’évaporation rapide.',
@@ -41,25 +30,25 @@ $resources = [
         <h1>Mes plantes</h1>
 
         <section class="plants-section">
-            <?php foreach ($plants as $plant): ?>
+            <?php foreach ($info as $plant): ?>
             <!-- Carte plante Page d'accueil PlantCare -->
             <article class="plant-card">
 
                 <div class="plant-image">
-                    <img src="<?php echo htmlspecialchars($plant['image'], ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($plant['alt'], ENT_QUOTES, 'UTF-8'); ?>">
+                    <img src="<?php echo htmlspecialchars($plant['Plante_image'], ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($plant['Plante_nom'], ENT_QUOTES, 'UTF-8'); ?>">
                 </div>
 
                 <div class="plant-info">
-                    <h2><?php echo htmlspecialchars($plant['name'], ENT_QUOTES, 'UTF-8'); ?></h2>
+                    <h2><?php echo htmlspecialchars($plant['Plante_nom'], ENT_QUOTES, 'UTF-8'); ?></h2>
 
                     <p>
                         <strong>Date d'achat:</strong>
-                        <?php echo htmlspecialchars($plant['purchase_date'], ENT_QUOTES, 'UTF-8'); ?>
+                        <?php echo htmlspecialchars($plant['Date_achat'], ENT_QUOTES, 'UTF-8'); ?>
                     </p>
 
                     <p>
                         <strong>Arrosage:</strong>
-                        <?php echo htmlspecialchars($plant['watering'], ENT_QUOTES, 'UTF-8'); ?>
+                        <?php echo htmlspecialchars($plant['Frequence_arosage'], ENT_QUOTES, 'UTF-8'); ?>
                     </p>
                 </div>
 
@@ -76,6 +65,17 @@ $resources = [
                 <span class="plus">+</span>
                 <span>Ajouter une plante...</span>
             </button>
+
+            <form action="add_plant.php" method="post" enctype="multipart/form-data">
+                <p>Test fonction</p>
+                <p>Nom : <input type="text" name="plant_name"></p>
+                <p>Espece : <input type="text" name="species_name"></p>
+                <p>Date d'achat : <input type="date" name="date_of_purchase" id=""></p>
+                <p>Image : <input type="file" name="plant_image" id=""></p>
+                <p>Quantitée d'eau : <input type="number" name="water_amount" id=""></p>
+                <p>Fréquence d'arrosage : <input type="number" name="watering_frequency" id=""></p>
+                <button>Ajouter plante</button>
+            </form>
 
         </section>
 

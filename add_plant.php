@@ -1,10 +1,11 @@
 <?php
+    include('debug.php');
     $plant_name = $_POST['plant_name'];
     $species_name = $_POST['species_name'];
     $date_of_purchase = $_POST['date_of_purchase'];
-    $plant_image = $_POST['plant_image'];
     $water_amount = $_POST['water_amount'];
     $watering_frequency = $_POST['watering_frequency'];
+    $plant_image = '';
 
     include('pdo.php');
 
