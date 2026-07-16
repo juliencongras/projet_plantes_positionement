@@ -1,7 +1,7 @@
 # Mes Plantes — Aperçu
 
 
-Page d'accueil basique pour gérer des plantes localement (PHP + CSS).
+Page d'accueil PlantCare pour gérer des plantes localement.
 
 Prévisualisation
 

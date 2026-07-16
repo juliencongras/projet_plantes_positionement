@@ -42,7 +42,7 @@ $resources = [
 
         <section class="plants-section">
             <?php foreach ($plants as $plant): ?>
-            <!-- Carte plante générée en PHP -->
+            <!-- Carte plante Page d'accueil PlantCare -->
             <article class="plant-card">
 
                 <div class="plant-image">
